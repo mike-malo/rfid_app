@@ -24,6 +24,7 @@ public class AndroidJSInterface {
         Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
     }
 
+//    添加web js接口
     @JavascriptInterface
     public void setRFID(String rfid) {
         Toast.makeText(mContext, rfid, Toast.LENGTH_SHORT).show();
@@ -44,6 +45,7 @@ public class AndroidJSInterface {
         return "Data from Android？？？？？？？？";
     }
 
+//    数据传递到fragment
     public interface OnRFIDReceivedListener {
         void onRFIDReceived(String rfid);
     }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">rfid_app</string>
+    <string name="app_name">RFID读写</string>
     <string name="qrcode_image">二维码区域</string>
     <string name="success">成功</string>
     <string name="fail">失败</string>

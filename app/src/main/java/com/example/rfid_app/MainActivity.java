@@ -33,6 +33,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private List<Fragment> datas = new ArrayList<>();
     private List<String> titles = new ArrayList<>();
+    private TabLayout tabs;
     FragmentPagerAdapter fragmentPagerAdapter;
     ViewPager viewPager;
 
@@ -42,13 +43,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Utils.loadSoundPool(this);
         viewPager = findViewById(R.id.viewPager);
-        viewPager.setAdapter(fragmentPagerAdapter);
+        tabs = findViewById(R.id.tabs);
+//        添加tab fragment，方向从左到右
         datas.add(new FirstFragment());
         datas.add(new SecondFragment());
-        titles.add("first");
-        titles.add("second");
+//        添加tab标题, 方向从左到右
+        titles.add("读取标签");
+        titles.add("写入标签");
+//        添加适配器
         fragmentPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager(), datas,titles);
         viewPager.setAdapter(fragmentPagerAdapter);
+        tabs.setupWithViewPager(viewPager);
     }
 
     @Override
@@ -70,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         connectUHFReader();
     }
 
+//    连接UHF读取器
     @SuppressLint("StaticFieldLeak")
     private void connectUHFReader() {
         ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
@@ -112,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
+//    关闭UHF读取器连接
     private void close() {
         UHFReader.getInstance().disConnect();
     }
